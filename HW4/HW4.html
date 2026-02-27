@@ -4,9 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>src= "./aquiferData.js"</script>
-</head>
-<body>
 
+</head>
+ <style>
+  table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+
+}
+.highlight {
+  background-color: #ed6666 !important;
+}
+</style>
+
+<body>
+ 
+  <table id = "earthquakeTable">
+  <tr>
+    <th>Region</th>
+    <th>People Who Felt It</th>
+  </tr>
+
+</table>
+  <script src= "earthquakeData.js"></script>  
+  <script>
+  var myTable = document.getElementById ("earthquakeTable")
+function popTable (feature){ // document.createElement is creating a tag that is connected to a row and html recognizes tr as a row//
+    var myRow = document.createElement ('tr')//tr means row and td is the cell//
+    var myCell = document.createElement('td')
+    var myCell2 = document.createElement ('td')
+    var nameRegion = feature.properties.place
+    var peopleFelt = feature.properties.felt
+    myCell.innerHTML = nameRegion //edit things inside the cell like this//
+    myCell2.innerHTML = peopleFelt
+
+   if (peopleFelt && Number(peopleFelt) > 10) {
+    myRow.classList.add("highlight")
+}
+
+    myRow.append(myCell) //the append function puts the tag you created inside the cell and row; you must append in the correct order to get the text to show up in the correct way//
+    myRow.append(myCell2)
+    myTable.append(myRow)
+
+
+}
+   data.features.forEach(function(feature) {
+    popTable(feature)
+})
+</script>
 </body>
 </html>

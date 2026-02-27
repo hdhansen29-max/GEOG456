@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paddle Trailheads</title>
+</head>
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+<body>
+   <div id="map"></div>
+    <style>
+         #map { height: 600px; }
+    </style>
+<script>
+var kayakIcon = L.icon({
+    iconUrl: 'https://www.clipartmax.com/png/middle/170-1701215_kayak-comments-kayak-icon-png.png',
+    iconSize:     [50,50], 
+    iconAnchor:   [16, 37], 
+    popupAnchor:  [0, 0] 
+});
+
+var trail1 = L.marker([35.318146186183988, -76.560823289611605], {icon: kayakIcon}).bindPopup('Oyster Creek Trail ');
+var trail2 = L.marker([35.253675537994305, -76.530590444727608], {icon: kayakIcon}).bindPopup('Middle Bay Trail');
+var trail3 = L.marker([35.144323419324941, -76.766334292092225], {icon: kayakIcon}).bindPopup('Bay River North Shore Trail');
+var trail4 = L.marker([35.022768645559786, -79.442635440506606], {icon: kayakIcon}).bindPopup('Lumber River Trail');
+var trail5 = L.marker([34.670182308089544, -77.138003526852387], {icon: kayakIcon}).bindPopup('Hammocks Beach Paddle Trail');
+var trail6 = L.marker([35.125528000341674, -76.74029854671187], {icon: kayakIcon}).bindPopup('Alligator Creek Trail');
+var trail7 = L.marker([35.896124585598187, -76.70605492564529], {icon: kayakIcon}).bindPopup('Conaby Creek Trail');
+var trail8 = L.marker([35.476183180568235, -76.324781075757343], {icon: kayakIcon}).bindPopup('Lake mattamuskeet Trail');
+var trail9 = L.marker([35.247011031010203, -76.57942541536373], {icon: kayakIcon}).bindPopup('Goose Creek Island Kayak Trail');
+var trail10 = L.marker([35.049320515442538, -77.048284506317813],{icon: kayakIcon}).bindPopup('Brices Creek Trail');
+
+
+var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+});
+
+var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'});
+
+var trails = L.layerGroup([trail1, trail2, trail3, trail4, trail5, trail6, trail7, trail8, trail9, trail10]);
+
+var map = L.map('map', {
+    center: [35.6115, -77.3752],
+    zoom: 8,
+    layers: [osm, trails]
+});
+
+var trails = L.layerGroup([trail1, trail2, trail3, trail4, trail5, trail6, trail7, trail8, trail9, trail10]);
+ 
+var baseMaps = {
+    "OpenStreetMap": osm,
+    "OpenStreetMap.HOT": osmHOT
+};
+
+var overlayMaps = {
+    "Paddle Trails": trails
+};
+var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map)  
+    </script>
+</body>
+</html>

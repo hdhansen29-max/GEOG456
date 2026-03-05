@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Earthquake Frequency Over One Week</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="earthquakeData.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+
+
+
+    <style>
+        #myfirstmap {
+            height: 550px;
+            width: 550px;
+        }
+
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            width: 550px;
+        }
+
+        .slider {
+            width: 550px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Earthquake Frequency Over the Course of One Week</h1>
+<h2>Use the slider to move through the week</h2>
+
+<div class="slider-container">
+    <input type="range" min="1771548539719" max="1772152296190" value="1771548539719" step="3600000" class="slider" id="slider" oninput="f()">
+</div>
+
+<div id="myfirstmap"></div>
+
+<script>
+
+var mymap = L.map('myfirstmap').setView([0,-25], 1);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap'
+}).addTo(mymap);
+
+var layerGroup = L.layerGroup().addTo(mymap);
+
+function f() {
+
+    layerGroup.clearLayers();
+
+    var sliderTime = parseInt(document.getElementById('slider').value);
+
+    for (var i = 0; i < data.features.length; i++) {
+
+        var earthquakeTime = data.features[i].properties.time;
+        var coords = data.features[i].geometry.coordinates;
+
+        var lon = coords[0];
+        var lat = coords[1];
+
+        if (earthquakeTime <= sliderTime) {
+
+            L.circleMarker([lat, lon], {
+                radius: 6,
+                color: "red"
+            }).addTo(layerGroup);
+        }
+    }
+}
+
+
+f();
+
+</script>
+
+</body>
+</html>

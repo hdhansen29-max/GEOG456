@@ -16,8 +16,8 @@ body {
   color: #fff;
 }
 
-/* --- HERO SECTION --- */
-.hero {
+/* --- INTRO SECTION --- */
+.intro {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -191,8 +191,8 @@ input[type="range"]::-webkit-slider-thumb {
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
+<!-- INTRO -->
+<section class="intro">
   <div class="text-section">
     <h1>Musical Transitions in the Southern United States</h1>
     <p>
@@ -313,43 +313,43 @@ const musicIcon = L.icon({
 
 // ===== DATASET =====
 const recordings = [
-  { year: 1959, coords: [35.14953, -90.049], type: "Blues", text: "Memphis — Stop All The Buses: Augusta Crawford" },
-  { year: 1934, coords: [34.11756425, -80.58155676], type: "Sacred Song",  text: "Reid Farm — Do you call that religion?: Robert Bentley, Harold Vosburg, Charlie Black, Clarence Banks " },
-  { year: 1936, coords: [33.99944044, -81.03687456], type: "Sacred Song", text: "Columbia — Zion’s Sitting At God’s Right Hand: Unidentified" },
-  { year: 1937, coords: [33.551441716449, -79.044923613175], type: "Play Song",  text: "Murrell’s Inlet — Gypsy Davy: Mrs. Alex Sing" },
-  { year: 1939, coords: [33.551441716449, -79.044923613175], type: "Play Song", text: "Murrell’s Inlet — The Ram of Derby: Minnie Floyd" },
-  { year: 1940, coords: [34.00362542, -81.04703192], type:"Sacred Song", text: "Columbia — I’ll Be Standing at the Station: People's Burial Aid Society Choir " },
-  { year: 1959, coords: [31.20173, -81.3317], type:"Play Song", text: "St. Simons Island — Hambone: Bessie Jones" },
-  { year: 1960, coords: [31.20173, -81.3317], type:"Ballad",text: "St. Simons Island — The Titanic: Georgia Sea Island Singers" },
-  { year: 1959, coords: [37.25262, -81.2712],type:"Love Song",text: "Bluefield — Dark Blue Eyes and Raven Hair: Preston Smith, Texas Gladden" },
-  { year: 1960, coords: [37.43786, -76.5768], type:"Sacred Song",text: "Ark — If I Could Hear My Mother Pray Again: Silver Leaf Quartet" },
-  { year: 1960, coords: [36.85077, -76.2859], type:"Sacred Song",text: "Norfolk — Jesus On The Mainline: Peerless Four" },
-  { year: 1942, coords: [33.522702276118, -86.814422614097],type:"Sacred Song", text: "Birmingham — American Star: Paige Denson" },
-  { year: 1959, coords: [34.73037, -86.5861],type:"Sacred Song", text: "Huntsville — Since I Laid My Burden Down: St. James Church congregation" },
-  { year: 1933, coords: [32.67295, -90.0373], type:"Lyric Song", text: "Canton — Casey Jones: Cornelius Steen" },
-  { year: 1936, coords: [33.52616, -90.6773],type:"Lyric Song", text: "Parchman Farm — Some folks say the devil was dead: Josephone Douglas, Christine Shannon, Lily Mallard, Bertha Riley, Alberta Turner, Passion Buckner, Louella Dade, M.B. Barnes " },
-  { year: 1937, coords: [32.27887, -90.0014], type:"Play Song",text: "Brandon — Rabbit in the Garden: Unidentified" },
-  { year: 1939, coords: [33.52616, -90.6773],type:"Holler", text: "Parchman Farm — Early in the Morning: Hollis (Fat Head) Washington" },
-  { year: 1940, coords: [33.80956, -90.5265],type:"Dance Song", text: "Drew — Cotton-Eyed Joe: John A. Lomax" },
-  { year: 1949, coords: [29.95107, -90.0715], type:"Blues",text: "New Orleans — Guitar Blues: John A. St. Cyr" },
-  { year: 1939, coords: [29.7604267, -95.3698028], type:"Play Song",text: "Houston — Home, Boys, Home: John B. Jones " },
+  { year: 1959, coords: [35.14953, -90.049], type: "Blues", Audio: "stopAllTheBuses.wav",  text: "Memphis — Stop All The Buses: Augusta Crawford" },
+  { year: 1934, coords: [34.11756425, -80.58155676], type: "Sacred Song", Audio: "doYouCallThatReligion.mp3",  text: "Reid Farm — Do you call that religion?: Robert Bentley, Harold Vosburg, Charlie Black, Clarence Banks" },
+  { year: 1936, coords: [33.99944044, -81.03687456], type: "Sacred Song", Audio: "zionsSittingAtGodsRightHand.mp3",text: "Columbia — Zion’s Sitting At God’s Right Hand: Unidentified" },
+  { year: 1937, coords: [33.551441716449, -79.044923613175], type: "Play Song", text: "Murrell’s Inlet — Gypsy Davy: Mrs. Alex Sing" },
+  { year: 1939, coords: [33.551441716449, -79.044923613175], Audio: "theRamofDerby.mp3", type: "Play Song", text: "Murrell’s Inlet — The Ram of Derby: Minnie Floyd" },
+  { year: 1940, coords: [34.00362542, -81.04703192], type:"Sacred Song", Audio:"i'llBeStandingAtTheStation.mp3", text: "Columbia — I’ll Be Standing at the Station: People's Burial Aid Society Choir " },
+  { year: 1959, coords: [31.20173, -81.3317], type:"Play Song", Audio: "hambone.wav", text: "St. Simons Island — Hambone: Bessie Jones" },
+  { year: 1960, coords: [31.20173, -81.3317], type:"Ballad", Audio:"theTitanic.wav", text: "St. Simons Island — The Titanic: Georgia Sea Island Singers" },
+  { year: 1959, coords: [37.25262, -81.2712],type:"Love Song", Audio:"darkBlueEyesandRavenHair.wav", text: "Bluefield — Dark Blue Eyes and Raven Hair: Preston Smith, Texas Gladden" },
+  { year: 1960, coords: [37.43786, -76.5768], type:"Sacred Song", Audio: "ifICouldHearMyMotherPrayAgain.wav", text: "Ark — If I Could Hear My Mother Pray Again: Silver Leaf Quartet" },
+  { year: 1960, coords: [36.85077, -76.2859], type:"Sacred Song",Audio: "jesusOnTheMainline.wav", text: "Norfolk — Jesus On The Mainline: Peerless Four" },
+  { year: 1942, coords: [33.522702276118, -86.814422614097],type:"Sacred Song", Audio:"americanStar.wav", text: "Birmingham — American Star: Paige Denson" },
+  { year: 1959, coords: [34.73037, -86.5861],type:"Sacred Song", Audio:"sinceILaidMyBurdenDown.wav", text: "Huntsville — Since I Laid My Burden Down: St. James Church congregation" },
+  { year: 1933, coords: [32.67295, -90.0373], type:"Lyric Song", Audio:"caseyJones.wav",  text: "Canton — Casey Jones: Cornelius Steen" },
+  { year: 1936, coords: [33.52616, -90.6773],type:"Lyric Song", Audio:"someFolksSayTheDevilWasDead.wav", text: "Parchman Farm — Some folks say the devil was dead: Josephone Douglas, Christine Shannon, Lily Mallard, Bertha Riley, Alberta Turner, Passion Buckner, Louella Dade, M.B. Barnes " },
+  { year: 1937, coords: [32.27887, -90.0014], type:"Play Song", Audio:"rabbitInTheGarden.wav", text: "Brandon — Rabbit in the Garden: Unidentified" },
+  { year: 1939, coords: [33.52616, -90.6773],type:"Holler", Audio: "earlyInTheMorning.wav", text: "Parchman Farm — Early in the Morning: Hollis (Fat Head) Washington" },
+  { year: 1940, coords: [33.80956, -90.5265],type:"Dance Song", Audio:"cottonEyedJoe.wav", text: "Drew — Cotton-Eyed Joe: John A. Lomax" },
+  { year: 1949, coords: [29.95107, -90.0715], type:"Blues", Audio:"guitarBlues.wav", text: "New Orleans — Guitar Blues: John A. St. Cyr" },
+  { year: 1939, coords: [29.7604267, -95.3698028], type:"Play Song", text: "Houston — Home, Boys, Home: John B. Jones " },
   { year: 1939, coords: [29.7604267, -95.3698028],type:"Sacred Song", text: "Houston — Coro de bandoleros: Eulalia Martinez, Paola Lopez, Genoveva Lopez, Gonzalo Lopez, Jose Lopez, Cleofe Lopez" },
-  { year: 1939, coords: [29.0444147, -95.5691126], type:"Play Song",text: "Clemens State Farm — Rabbit in the Garden: A.B. (Ace) Johnson" },
-  { year: 1939, coords: [29.286217, -95.545807],type:"Blues", text: "Ramsey State Farm — Smokey Mountain Blues: Sylvester (Texas Stavin' Chain) Jones, Wallace Chains " },
-  { year: 1939, coords: [29.5984434, -95.6225521], type:"Sacred Song",text: "Sugarland — Vela por tu amante: Gonzalo Lopez, Cleofe Lopez" },
-  { year: 1939, coords: [25.9017472, -97.4974838],type:"Play Song", text: "Brownsville — Las Aguilar de San Miguel: Manuela Longoria" },
-  { year: 1939, coords: [27.2269872, -98.1441714],type:"Play Song", text: "Falfurrias — The Kicking Mule: Frank Goodwyn " },
-  { year: 1939, coords: [27.4217, -97.7892],type:"Dance Song", text: "Sarita — Chinese Breakdown: Manuel Salinas, Frank Goodwyn" },
-  { year: 1939, coords: [27.5158689, -97.856109], type:"Play Song",text: "Kingsville — Macalilililion: Olga Acevedo" },
+  { year: 1939, coords: [29.0444147, -95.5691126], type:"Play Song", Audio:"rabbitInTheGarden2.wav", text: "Clemens State Farm — Rabbit in the Garden: A.B. (Ace) Johnson" },
+  { year: 1939, coords: [29.286217, -95.545807],type:"Blues", Audio: "smokeyMountainBlues.wav",  text: "Ramsey State Farm — Smokey Mountain Blues: Sylvester (Texas Stavin' Chain) Jones, Wallace Chains " },
+  { year: 1939, coords: [29.5984434, -95.6225521], type:"Sacred Song", Audio:"velaportuAmante.wav", text: "Sugarland — Vela por tu amante: Gonzalo Lopez, Cleofe Lopez" },
+  { year: 1939, coords: [25.9017472, -97.4974838],type:"Play Song", Audio:"lasAguilasdeSanMiguel.wav",  text: "Brownsville — Las Aguilar de San Miguel: Manuela Longoria" },
+  { year: 1939, coords: [27.2269872, -98.1441714],type:"Play Song", Audio:"theKickingMule.wav",  text: "Falfurrias — The Kicking Mule: Frank Goodwyn " },
+  { year: 1939, coords: [27.4217, -97.7892],type:"Dance Song", Audio:"chineseBreakdown.wav", text: "Sarita — Chinese Breakdown: Manuel Salinas, Frank Goodwyn" },
+  { year: 1939, coords: [27.5158689, -97.856109], type:"Play Song", Audio:"macalilililion.wav", text: "Kingsville — Macalilililion: Olga Acevedo" },
   { year: 1939, coords: [29.7231426, -98.9347206],type:"Lyric Song", text: "Pipe Creek — Rye Whiskey: Elmo Newcomer " },
-  { year: 1939, coords: [29.7231426, -98.9347206],type:"Holler", text: "Pipe Creek — Fox and Hounds: Otis J. Evans, Clinton Saathoff, Charles Eckhardt " },
-  { year: 1939, coords: [30.7235263, -95.5507771], type:"Blues",text: "Goree State Farm — Desert Blues: Cowboy Jack Ramsey, Hattie Ellis" },
-  { year: 1939, coords: [30.5701906, -97.4097331], type:"Work Song",text: "Taylor — Black Betty: Moses (Clear Rock) PLatt" },
-  { year: 1939, coords: [30.7235263, -95.5507771], type:"Dance Song",text: "Walls Unit — Tom and Jerry: Pop Warner" },
-  { year: 1939, coords: [30.92176844, -93.72075389], type:"Play Song",text: "Liberty Hill School — Old Speckled Lady: Unidentified" },
-  { year: 1939, coords: [31.00068939, -93.66803978], type:"Sacred Song",text: "Burkeville-Newton — I’m Gonna Lay Down My Life: Henry Truvillion " },
-  { year: 1939, coords: [33.9847733, -91.560687],type:"Work Song", text: "Cummins State Farm — Ratty, Ratty Section: Father Howard" },
-  { year: 1959, coords: [37.13343, -82.766], type:"Sacred Song",text: "Mayking — One Night While The Moon Was Shining: Thornton Regular Baptist Church congregation, unidentified, George Spangler, Howard Adams " }
+  { year: 1939, coords: [29.7231426, -98.9347206],type:"Holler", Audio:"foxAndHounds.wav", text: "Pipe Creek — Fox and Hounds: Otis J. Evans, Clinton Saathoff, Charles Eckhardt " },
+  { year: 1939, coords: [30.7235263, -95.5507771], type:"Blues", Audio:"desertBlues.wav", text: "Goree State Farm — Desert Blues: Cowboy Jack Ramsey, Hattie Ellis" },
+  { year: 1939, coords: [30.5701906, -97.4097331], type:"Work Song", Audio:"blackBetty.wav", text: "Taylor — Black Betty: Moses (Clear Rock) PLatt" },
+  { year: 1939, coords: [30.7235263, -95.5507771], type:"Dance Song", Audio:"tomAndJerry.wav", text: "Walls Unit — Tom and Jerry: Pop Warner" },
+  { year: 1939, coords: [30.92176844, -93.72075389], type:"Play Song", Audio:"oldSpeckledLady.wav", text: "Liberty Hill School — Old Speckled Lady: Unidentified" },
+  { year: 1939, coords: [31.00068939, -93.66803978], type:"Sacred Song", Audio:"i'mGonnaLayDownMyLifeForMyLord.wav", text: "Burkeville-Newton — I’m Gonna Lay Down My Life: Henry Truvillion " },
+  { year: 1939, coords: [33.9847733, -91.560687],type:"Work Song", Audio:"rattyRattySection.wav", text: "Cummins State Farm — Ratty, Ratty Section: Father Howard" },
+  { year: 1959, coords: [37.13343, -82.766], type:"Sacred Song", Audio:"oneNightWhiletheMoonWasShiningFromHeaven.wav", text: "Mayking — One Night While The Moon Was Shining: Thornton Regular Baptist Church congregation, unidentified, George Spangler, Howard Adams " }
 ];
 
 let activeMarkers = [];
@@ -365,9 +365,19 @@ function updateMap(year) {
   icon: musicIcon,
   riseOnHover: true
 })
-.bindPopup(`<b>${r.year}</b><br>${r.text}`);
+.bindPopup(`
+  <b>${r.year}</b><br>
+  ${r.text}<br><br>
 
-      
+  ${
+    r.Audio 
+      ? `<audio controls>
+           <source src="audio/${r.Audio}" type="audio/wav">
+         </audio>`
+      : "No recording available"
+  }
+`);
+
       marker.addTo(map);
       activeMarkers.push(marker);
     }

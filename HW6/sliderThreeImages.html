@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+img{
+    position:absolute;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<input type="range" min="0" max="2" step=".01" orient="vertical" value="0" oninput="myFunction(this.value)" style="height:400px;">
+
+<div class="container">
+    <img id="img1" src="./images/maumeeBay2004.png" height="400px">
+    <img id="img2" src="./images/maumeeBay2011.png" height="400px">
+    <img id="img3" src="./images/maumeeBay2023.png" height="400px">
+</div>
+
+<script>
+let img2 = document.getElementById("img2");
+let img3 = document.getElementById("img3");
+
+function myFunction(value){
+
+    value = Number(value);
+
+    if(value <= 1){
+        img2.style.opacity = value;
+        img3.style.opacity = 0;
+    }
+    else{
+        img2.style.opacity = 1;
+        img3.style.opacity = value - 1;
+    }
+}
+</script>
+
+</body>
+</html>

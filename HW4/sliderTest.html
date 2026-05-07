@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earthquake Frequency Over One Week</title>
+    <script src="earthquakeData.js"></script>
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            crossorigin=""></script>
+
+    <style>
+        #map {
+            width: 100%;
+            height: 550px;
+        }
+    </style>
+</head>
+
+<body>
+<h1>Earthquake Frequency Over One Week</h1>
+
+    <input id="dateSlider" type="range" min="0" max="" value="0" step="1" oninput="moveSlider(this.value)">
+
+    <div id="map"></div>
+
+<script>
+
+
+    var map = L.map('map').setView([0, -25], 2);
+
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+   
+    document.getElementById("dateSlider").max = data.features.length - 1;
+
+   
+    var LeafIcon = L.Icon.extend({
+        options: {
+            iconSize: [40, 40],
+            iconAnchor: [20, 20]
+        }
+    });
+
+    var greenIcon = new LeafIcon({
+        iconUrl: 'clipart566321.png'
+    });
+
+  
+    var geojson = L.geoJson(data.features[0], {
+
+        pointToLayer: function(feature, latlng) {
+
+            return L.marker(latlng, {
+                icon: greenIcon
+            });
+
+    
+
+        }
+
+    }).addTo(map);
+
+  
+    function moveSlider(value) {
+        map.removeLayer(geojson);
+        var feature = data.features[value];
+       
+
+    
+        geojson = L.geoJson(feature, {
+            pointToLayer: function(feature, latlng) {
+
+                return L.marker(latlng, {
+                    icon: greenIcon });}
+                 });
+
+        map.addLayer(geojson); }
+    moveSlider(0);
+       window.onload = function() {
+        document.getElementById('dateSlider').value = 0;  
+    }; 
+
+</script>
+
+</body>
+</html>
